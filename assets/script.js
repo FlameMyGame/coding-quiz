@@ -138,42 +138,42 @@
             correctAnswer: "a"
         },
         {
-            question: "What tag is used to define an unordered list that is bulleted?",
+            question: "Which of these is NOT a programming language?",
             answers: {
-                a: "<u>",
-                b: "<li>",
-                c: "<s>",
-                d: "<ul>",
+                a: "Banana",
+                b: "Python",
+                c: "Java",
+                d: "Ruby",
             },
-            correctAnswer: "d"
+            correctAnswer: "a"
         },
         {
             question: "What group of tags are used to define the text headers in the body of the HTML document?",
             answers: {
-                a: "<footer>",
-                b: "<td>",
-                c: "<button>",
-                d: "<h1> to <h6>",
+                a: "footer",
+                b: "td",
+                c: "button",
+                d: "h1 to h6",
             },
             correctAnswer: "d"
         },
         {
             question: "What tag is used to render or transform text into an important (bold) version?",
             answers: {
-                a: "<blockquote>",
-                b: "<a>",
-                c: "<strong>",
-                d: "<em>",
+                a: "blockquote",
+                b: "a",
+                c: "strong",
+                d: "em",
             },
             correctAnswer: "c"
         },
         {
             question: "What tag can be used to insert a line break or blank line in an HTML document?",
             answers: {
-                a: "<head></head>",
-                b: "<body></body>",
-                c: "<title></title>",
-                d: "<br></br>",
+                a: "head /head",
+                b: "body /body",
+                c: "title /title",
+                d: "br /br",
             },
             correctAnswer: "d"
         },
@@ -190,10 +190,10 @@
         {
             question: "What tag is used to underline a word or line of text?",
             answers: {
-                a: "<u>",
-                b: "<ul>",
-                c: "<s>",
-                d: "<li>",
+                a: "u",
+                b: "ul",
+                c: "s",
+                d: "li",
             },
             correctAnswer: "a"
         },
