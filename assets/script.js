@@ -1,9 +1,3 @@
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
-
-
-
 function buildQuiz() {
 
     const output = [];
@@ -33,18 +27,59 @@ function buildQuiz() {
     );
 
     quizContainer.innerHTML = output.join('');
+
 }
 
-function showResults() {}
+function showResults() {
+    const answerContainers = quizContainer.querySelectorAll('.answers');
+
+    let numCorrect = 0;
+
+    quizQuestions.forEach((currentQuestion, questionNumber) => {
+
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
 
-buildQuiz();
+        if (userAnswer === currentQuestion.correctAnswer) {
+
+            numCorrect++;
+
+            answerContainers[questionNumber].getElementsByClassName.color = 'green';
+        } else {
+            answerContainers[questionNumber].getElementsByClassName.color = 'red';
+        }
+
+    });
+
+    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+
+}
+
+
+quizQuestions.forEach((currentQuestion, questionNumber) => {
+
+    const answerContainer = answerContainers[questionNumber];
+    const selector = `input[name=question${questionNumber}]:checked`;
+    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+    if (userAnswer === currentQuestion.correctAnswer) {
+
+        numCorrect++;
+
+        answerContainers[questionNumber].style.color = 'green';
+    } else {
+
+        answerContainers[questionNumber].style.color = 'red';
+    }
+});
 
 
 
-submitButton.addEventListener('click', showResults);
-
-
+const quizContainer = document.getElementById('quiz');
+const resultsContainer = document.getElementById('results');
+const submitButton = document.getElementById('submit');
 const quizQuestions = [{
         question: "Which is the correct use of the <span> element?",
         answers: {
@@ -147,3 +182,7 @@ const quizQuestions = [{
 
 
 ]
+buildQuiz();
+
+
+submitButton.addEventListener('click', showResults);
