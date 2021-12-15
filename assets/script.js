@@ -62,7 +62,8 @@
 
         });
 
-        resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+        resultsContainer.innerHTML = `${numCorrect} out of ${quizQuestions.length}`;
+        localStorage.setItem('mostRecentScore', numCorrect);
 
     }
 
@@ -77,10 +78,16 @@
         }
         if (currentSlide === slides.length - 1) {
             nextButton.style.display = 'none';
+            highScoreButton.style.display = 'inline-block';
+            saveButton.style.display = 'inline-block';
             submitButton.style.display = 'inline-block';
+            usernameForm.style.display = 'inline-block';
         } else {
             nextButton.style.display = 'inline-block';
+            highScoreButton.style.display = 'none';
+            saveButton.style.display = 'none';
             submitButton.style.display = 'none';
+            usernameForm.style.display = 'none';
         }
     }
 
@@ -91,6 +98,7 @@
     function showPreviousSlide() {
         showSlide(currentSlide - 1);
     }
+
 
 
 
@@ -201,8 +209,47 @@
 
     ]
 
+
+
+
+    const username = document.getElementById('username');
+    const saveScoreBtn = document.getElementById('saveScoreBtn');
+    const results = document.getElementById('results');
+    const mostRecentScore = localStorage.getItem('mostRecentScore');
+
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+    const MAX_HIGH_SCORES = 5;
+    console.log(highScores);
+
+    results.innerText = mostRecentScore;
+
+    username.addEventListener("keyup", () => {
+        saveScoreBtn.disabled = !username.value;
+    });
+
+    saveHighScore = e => {
+        console.log("clicked the save button!");
+
+        const score = {
+            score: Math.floor(Math.random() * 100),
+            name: username.value,
+        };
+        highScores.push(score);
+        highScores.sort((a, b) => b.score - a.score)
+        highScores.splice(5);
+
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+        window.location.assign("index.html");
+    };
+
+
+
     buildQuiz();
 
+    const highScoreButton = document.getElementById("highscores");
+    const usernameForm = document.getElementById("username");
+    const saveButton = document.getElementById("saveScoreBtn");
     const previousButton = document.getElementById("previous");
     const nextButton = document.getElementById("next");
     const slides = document.querySelectorAll(".slide");

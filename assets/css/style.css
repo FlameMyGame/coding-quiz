@@ -68,3 +68,16 @@ button:hover {
     height: 200px;
     margin-top: 40px;
 }
+
+
+/* FORMS */
+
+#username {
+    margin-bottom: 1rem;
+    width: 20rem;
+    padding: 1.5rem;
+    font-size: 1.8rem;
+    border: none;
+    box-shadow: #279;
+    border-radius: 3px;
+}
